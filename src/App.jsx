@@ -1,16 +1,55 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Profile from "./pages/Profile";
+import TaskDashboard from "./pages/TaskDashboard";
+import TaskDetails from "./pages/TaskDetails";
+import Articles from "./pages/Articles";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import PrivateRoute from "./components/PrivateRoute";
 
-function App() {
-  const [count, setCount] = useState(0);
-
+export default function App() {
   return (
-    <div className="flex justify-center">
-      <h1 className="text-9xl text-blue-600">hello najjar</h1>
-    </div>
+    <Router>
+      <AuthProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/articles" element={<Articles />} />
+          <Route
+            path="/profile"
+            element={
+              <PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <TaskDashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/tasks/:taskId"
+            element={
+              <PrivateRoute>
+                <TaskDetails />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </AuthProvider>
+    </Router>
   );
 }
-
-export default App;

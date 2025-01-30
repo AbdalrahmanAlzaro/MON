@@ -4,12 +4,14 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyDCQXTbGAk8Bw1CWFq1JVil6XSZUletuWc",
+  authDomain: "najjar-88848.firebaseapp.com",
+  databaseURL: "https://najjar-88848-default-rtdb.firebaseio.com",
+  projectId: "najjar-88848",
+  storageBucket: "najjar-88848.firebasestorage.app",
+  messagingSenderId: "632206943440",
+  appId: "1:632206943440:web:bff522c47bc4060ed9aad5",
+  measurementId: "G-WVBCV5HFT5",
 };
 
 const app = initializeApp(firebaseConfig);
