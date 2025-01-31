@@ -2,10 +2,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
 import { toast } from "react-toastify";
+import { useAuth } from "../context/AuthContext";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const user = auth.currentUser;
+  const { user } = useAuth();
 
   const handleLogout = async () => {
     try {
@@ -42,6 +43,9 @@ export default function Navbar() {
           />
           {user ? (
             <>
+              <span className="text-white">
+                Welcome, {user.displayName || user.email}
+              </span>
               <Link to="/profile" className="text-white hover:text-gray-200">
                 Profile
               </Link>
